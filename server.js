@@ -10,8 +10,15 @@ const app = express();
 const port = 2000;
 
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
+const corsOptions = {
+  origin: "*",  // Allow requests from any origin
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Allow specific methods
+  allowedHeaders: "*",  // Allow any headers in requests
+};
+
+app.use(cors(corsOptions));
+
 
 // MySQL database connection
 const db = mysql.createConnection({
