@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        fetch('http://3.0.61.197:2000/register', {
+        fetch('http://wellwise.info:2000/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phone = document.getElementById('phone').value; // Use phone number for login
         const password = document.getElementById('password').value;
 
-        fetch('http://3.0.61.197:2000/login', {
+        fetch('http://wellwise.info:2000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch data with pagination
     function fetchPaginatedData(page = 1, calories = '', protein = '', carbohydrates = '') {
-        const url = new URL(`http://3.0.61.197:2000/data`);
+        const url = new URL(`http://wellwise.info:2000/data`);
         url.searchParams.append('page', page);
         if (calories) url.searchParams.append('calories', calories);
         if (protein) url.searchParams.append('protein', protein);
