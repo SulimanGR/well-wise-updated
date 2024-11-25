@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 
 const app = express();
-const port = 2000;
+const port = 80;
 
 // Middleware
 app.use(bodyParser.json());
@@ -244,7 +244,7 @@ app.get("/data", (req, res) => {
   });
 });
 
-// Start the server
-app.listen(port, () => {
+// Start the server on port 80
+app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on http://wellwise.info:${port}`);
 });
