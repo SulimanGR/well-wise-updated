@@ -246,5 +246,5 @@ app.get("/data", (req, res) => {
 
 // Start the server on specific
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Server running on http://wellwise.info:${port}`);
+  console.log(`Server running on http://172.31.30.169:${port}`);
 });
