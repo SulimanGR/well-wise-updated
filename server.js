@@ -16,6 +16,32 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],  // Allow specific methods
   allowedHeaders: "*",  // Allow any headers in requests
 };
+app.use(express.static(__dirname));
+
+// Serve the CSS files from the 'css' folder
+app.use('/css', express.static(path.join(__dirname, 'css')));
+
+// Route to serve index.html at the root
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Other routes for specific pages
+app.get("/calcPage", (req, res) => {
+  res.sendFile(path.join(__dirname, "calcPage.html"));
+});
+
+app.get("/guide", (req, res) => {
+  res.sendFile(path.join(__dirname, "guide.html"));
+});
+
+app.get("/main", (req, res) => {
+  res.sendFile(path.join(__dirname, "main.html"));
+});
+
+app.get("/searchPage", (req, res) => {
+  res.sendFile(path.join(__dirname, "searchPage.html"));
+});
 
 app.use(cors(corsOptions));
 
