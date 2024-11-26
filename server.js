@@ -27,6 +27,7 @@ const db = mysql.createConnection({
   database: "fooddata", // Your database name
 });
 
+
 // Connect to MySQL
 db.connect((err) => {
   if (err) {
