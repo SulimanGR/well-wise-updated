@@ -18,8 +18,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.static(__dirname));  // Serve HTML and JS files from 'well-wise-updated'
-app.use('/css', express.static(path.join(__dirname, 'css')));
 
 // MySQL database connection
 const db = mysql.createConnection({
@@ -179,27 +177,7 @@ app.get("/searchPage", authenticateToken, (req, res) => {
   res.sendFile(path.join(__dirname, "searchPage.html")); // Serve index.html directly
 });
 
-// Serve the root route
-app.get("/index", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));  // Serve the root HTML page
-});
 
-// Other routes for specific pages
-app.get("/calcPage", (req, res) => {
-  res.sendFile(path.join(__dirname, "calcPage.html"));
-});
-
-app.get("/guide", (req, res) => {
-  res.sendFile(path.join(__dirname, "guide.html"));
-});
-
-app.get("/main", (req, res) => {
-  res.sendFile(path.join(__dirname, "main.html"));
-});
-
-app.get("/searchPage", (req, res) => {
-  res.sendFile(path.join(__dirname, "searchPage.html"));
-});
 
 // Route to fetch data from the meals table with pagination and filtering
 app.get("/data", (req, res) => {
@@ -269,5 +247,5 @@ app.get("/data", (req, res) => {
 
 // Start the server on specific
 app.listen(port, "0.0.0.0", () => {
-  console.log(`Server running on http://wellwise.info:${port}`);
+  console.log(`Server running on https://well-wise-updated.onrender.com:${port}`);
 });
