@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 
 const app = express();
-const port = 2000;
+const port = process.env.PORT || 2000; // Use Render's port or fallback to 2000
 
 // Middleware
 app.use(bodyParser.json());
