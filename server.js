@@ -18,7 +18,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));  // Serve HTML and JS files from 'well-wise-updated'
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
 // MySQL database connection
 const db = mysql.createConnection({
