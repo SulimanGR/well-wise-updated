@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    
     // Function to fetch data with pagination
     function fetchPaginatedData(page = 1, calories = '', protein = '', carbohydrates = '') {
         const url = new URL(`http://wellwise.info:2000/data`);
