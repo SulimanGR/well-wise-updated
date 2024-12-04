@@ -7,25 +7,64 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 
 const app = express();
-const port = 2000; // Use Render's port or fallback to 2000
+const port = process.env.PORT || 2000;
 
-// Middleware
-app.use(bodyParser.json());
+// CORS options
 const corsOptions = {
-  origin: "*",  // Allow requests from any origin
-  methods: ["GET", "POST", "PUT", "DELETE"],  // Allow specific methods
-  allowedHeaders: "*",  // Allow any headers in requests
+  origin: "*", // Allow only requests from this origin
+  methods: ["GET", "POST", "PUT"],  // Allow specific methods
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-app.use(cors(corsOptions));
+// Middleware
+app.use(cors(corsOptions));  // CORS middleware
+app.use(bodyParser.json());  // Parse JSON bodies
+
+// Middleware to block access to sensitive files
+app.use((req, res, next) => {
+  const forbiddenFiles = ['.env', '.git', '.gitignore'];
+  if (forbiddenFiles.some(file => req.url.includes(file))) {
+      return res.status(403).send('Access denied');
+  }
+  next();
+});
+
+// Serve the static HTML and JS files from the root of 'well-wise-render'
+app.use(express.static(__dirname));  // Serve static files from the current directory
+
+// Serve the CSS files from the 'css' folder
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
 // MySQL database connection
 const db = mysql.createConnection({
-  host: "fooddata.czio48s4mhh9.ap-southeast-1.rds.amazonaws.com",
-  user: "welltbn", // Use your MySQL username
-  password: "fofo1234", // Use your MySQL password
-  database: "fooddata", // Your database name
+  host: "fooddata.czio48s4mhh9.ap-southeast-1.rds.amazonaws.com", // Use your MySQL host
+  user: "welltbn",  // Use your MySQL username
+  password: "fofo1234",  // Use your MySQL password
+  database: "fooddata",  // Your database name
 });
+
+// Route to serve index.html at the root
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Other routes for specific pages
+app.get("/calcPage", (req, res) => {
+  res.sendFile(path.join(__dirname, "calcPage.html"));
+});
+
+app.get("/guide", (req, res) => {
+  res.sendFile(path.join(__dirname, "guide.html"));
+});
+
+app.get("/main", (req, res) => {
+  res.sendFile(path.join(__dirname, "main.html"));
+});
+
+app.get("/searchPage", (req, res) => {
+  res.sendFile(path.join(__dirname, "searchPage.html"));
+});
+
 
 
 // Connect to MySQL
@@ -34,7 +73,7 @@ db.connect((err) => {
     console.error("Database connection error:", err);
     return;
   }
-  console.log("Connected to the MySQL database");
+  console.log("Connected to the MySQL database (AWS RDS)");
 });
 
 // API endpoint for registration

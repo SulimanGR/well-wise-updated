@@ -1,0 +1,155 @@
+/* Ensure full height for html and body */
+html, body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Ensure full height */
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.4s ease-in-out; /* Smooth transition */
+    position: relative; /* Ensure positioning works correctly */
+}
+
+/* Container for night mode button */
+.night-mode-container {
+    position: absolute; /* Position it absolutely within the body */
+    top: 20px;
+    left: 20px; /* Set it to the top-left corner */
+    z-index: 10; /* Ensure it stays on top of other elements */
+}
+
+/* Styling for night mode button */
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Other content styles (unchanged) */
+h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #00ACC1;
+}
+
+h2 span {
+    color: #FF4081;
+}
+
+.container {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.box {
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    transition: 0.4s ease-in-out;
+}
+
+.box:hover {
+    transform: scale(1.1);
+}
+
+.box i {
+    font-size: 40px;
+    color: #00ACC1;
+}
+
+.box h3 {
+    color: #00ACC1;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #00ACC1;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0097A7;
+}
+
+#logout {
+    display: inline-block; 
+    padding: 0; 
+    margin-top: 20px;
+}
+
+#logout-button {
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    background-color: #FF4081; 
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    padding: 10px 16px; 
+    font-size: 14px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+}
+
+#logout-button i {
+    font-size: 18px; 
+    transition: transform 0.3s ease; 
+    color: #fff;
+}
+
+#logout-button:hover {
+    background-color: #FF618B; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+}
+
+#logout-button:hover i {
+    transform: scale(1.2);
+}
+
+/* Dark mode styles (same as before) */
+[data-theme="dark"] {
+    background: #121212; /* Dark background */
+    color: #fff; /* Light text for dark mode */
+}
+
+[data-theme="dark"] .box {
+    background: #333; /* Darker box background */
+    color: #fff; /* Light text inside boxes */
+}
+
+[data-theme="dark"] .box i {
+    color: #ffeb3b; /* Yellow icons for better contrast */
+}
+
+[data-theme="dark"] button {
+    background-color: #ff4081; /* Dark mode button color */
+}
+
+[data-theme="dark"] button:hover {
+    background-color: #ff618b; /* Hover color in dark mode */
+}
+
+[data-theme="dark"] #logout-button {
+    background-color: #009688; /* Different logout button color */
+}
+
+[data-theme="dark"] #logout-button:hover {
+    background-color: #00796b; /* Dark hover color */
+}

@@ -1,0 +1,95 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Define default (light mode) colors */
+:root {
+    --background-color: #e0f7fa;
+    --primary-color: #00ACC1;
+    --secondary-color: #FF4081;
+    --text-color: #333;
+    --button-background: #00ACC1;
+    --button-hover: #0097A7;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Night Mode Variables */
+[data-theme='dark'] {
+    --background-color: #121212;
+    --primary-color: #00ACC1;
+    --secondary-color: #FF4081;
+    --text-color: #e0e0e0;
+    --button-background: #0097A7;
+    --button-hover: #00ACC1;
+    --box-shadow: rgba(255, 255, 255, 0.1);
+}
+
+/* Body */
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+/* Buttons */
+button {
+    background-color: var(--button-background);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+/* Box shadow for cards, containers, etc. */
+.box, .container, .register-container, .popup-content {
+    box-shadow: 0 4px 12px var(--box-shadow);
+}
+
+/* Example for night mode styles on form elements */
+input, textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+input:focus, textarea:focus {
+    border-color: #00ACC1;
+}
+
+/* Night mode specific styles for links */
+a {
+    color: var(--secondary-color);
+}
+
+a:hover {
+    color: #FF618B;
+}
+
+/* Optional: Darken elements for better contrast */
+.item, .register-container, .popup-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Add more styles for your HTML pages here */
+
+/* Custom media queries for responsive design */
+@media (max-width: 768px) {
+    /* Adjustments for mobile devices if necessary */
+}

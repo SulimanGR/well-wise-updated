@@ -5,99 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Calculator</title>
-    <!-- <link rel="stylesheet" href="css/calc-page.css"> -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            /* background-color: #f2f2f2; */
-            background: linear-gradient(to bottom right, #e0f7fa, #fce4ec);
-        }
-        .calculator {
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-        h2 {
-        text-align: center;
-        color: #00ACC1;
-        margin-bottom: 20px;
-        }
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .note {
-            margin: 20px 0;
-            font-size: 14px;
-            color: #666;
-            text-align: center;
-        }
-        .note span{
-            color: #FF4081;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            /* background: #007bff; */
-            background-color: #00ACC1;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            flex: 1;
-        }
-        button:hover {
-            /* background: #0056b3; */
-            background-color: #0097A7;
-        }
-        .back-button {
-            background: #6c757d;
-        }
-        .back-button:hover {
-            background: #5a6268;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/calc-page.css">
+    <link rel="stylesheet" href="css/nightmode.css">
 </head>
 
 <body id="calc-page">
+    <button class="toggle-button" onclick="toggleNightMode()">
+        🌙
+    </button>
     <script>
     // Check if the user is logged in
     const token = localStorage.getItem('token');
@@ -162,7 +77,57 @@
         <div class="result" id="result"></div>
     </div>
 
+    <script>
+        function addNavBar() {
+            const navBar = document.createElement('div');
+            navBar.style.position = 'fixed';
+            navBar.style.top = '10px';
+            navBar.style.right = '10px';
+            navBar.style.backgroundColor = '#333';
+            navBar.style.padding = '10px';
+            navBar.style.borderRadius = '8px';
+            navBar.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
+        
+            const pages = [
+                { name: 'Calculator', href: 'calcPage.html' },
+                { name: 'Search', href: 'searchPage.html' },
+                { name: 'Guide', href: 'guide.html' },
+                { name: 'Home', href: 'main.html' },
+            ];
+        
+            pages.forEach(page => {
+                const link = document.createElement('a');
+                link.href = page.href;
+                link.textContent = page.name;
+                link.style.color = '#fff';
+                link.style.textDecoration = 'none';
+                link.style.margin = '0 8px';
+                link.style.padding = '5px 10px';
+                link.style.borderRadius = '5px';
+                link.style.transition = 'background-color 0.3s';
+        
+                link.addEventListener('mouseover', () => {
+                    link.style.backgroundColor = '#555';
+                });
+                link.addEventListener('mouseout', () => {
+                    link.style.backgroundColor = 'transparent';
+                });
+        
+                navBar.appendChild(link);
+            });
+        
+            document.body.appendChild(navBar);
+        }
+        </script>
+        
+        <script>
+            addNavBar();
+        </script>
+        
+        
+
     <script src="calculator.js"></script>
+    <script src="nightmode.js"></script>
 </body>
 
 </html>
